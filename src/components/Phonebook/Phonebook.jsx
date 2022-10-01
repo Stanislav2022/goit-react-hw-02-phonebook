@@ -8,17 +8,28 @@ export default class Phonebook extends Component {
         name: ''
     };
     handleName = (e) => {
-        this.setState({ title: e.target.value });
+        this.setState({ name: e.target.value });
     }
+    nameId = nanoid();
+
     
-  render() {
+    render() {
+        const { nameId } = this;
     return (
         <>
             <div>
                 <h2>Phonebook</h2>
                 <div className={css.form}>
-                    <label htmlFor="">Name</label>
-                    <input className={css.input} type="text" value={this.state.name} onChange={this.handleName} />
+                    <label htmlFor={nameId} >Name</label>
+                    <input className={css.input} id={nameId} type="text" value={this.state.name} onChange={this.handleName} />
+                    <input
+                        className={css.input}
+                        type="tel"
+                        name="number"
+                        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                        required
+                    />
                     <button>Add contact</button>
                 </div>
             </div>
