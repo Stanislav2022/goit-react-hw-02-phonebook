@@ -9,16 +9,21 @@ export default class Phonebook extends Component {
         number: '',
     };
     handlePhonebook = (e) => {
-        const {name, value} = e.target
+        const { name, value } = e.target
         this.setState({ [name]: value });
         
-    }
+    };
     nameId = nanoid();
     numberId = nanoid();
     handleSubmite = (e) => {
         e.preventDefault()
-        console.log(e);
-    }
+        const { name, number } = this.state
+        this.setState({
+            name: '',
+            number: '',
+        })
+        console.log(name, number);
+    };
 
     
     render() {
@@ -26,9 +31,8 @@ export default class Phonebook extends Component {
     return (
         <>
             <div className={css.form}>
+                <h1>Phonebook</h1>
                 <form onSubmit={handleSubmite}>
-                    <h2>Phonebook</h2>
-                    fo
                     <div>
                         <label htmlFor={nameId}> Name </label>
                         <input
