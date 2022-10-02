@@ -22,8 +22,12 @@ export default class Phonebook extends Component {
                 <div className={css.form}>
                     <label htmlFor={nameId} >Name</label>
                     <input className={css.input} id={nameId} type="text" value={this.state.name} onChange={this.handleName} />
+                </div>
+                 <div>
+                    <label htmlFor={nameId} >Number</label>
                     <input
                         className={css.input}
+                        id={nameId}
                         type="tel"
                         name="number"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
