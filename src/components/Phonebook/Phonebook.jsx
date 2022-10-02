@@ -4,7 +4,18 @@ import css from "./Phonebook.module.css";
 import ContactForm from "./ContactForm/ContactForm"
 
 export default class Phonebook extends Component {
-    
+    state = {
+        contacts: [],
+        filter: ''
+    };
+
+    addContats = (data) => {
+        this.setState((prev) => {
+            return {
+        contacts: [...prev.contacts, data]
+    }
+})
+    }
     
     render() {
     return (
