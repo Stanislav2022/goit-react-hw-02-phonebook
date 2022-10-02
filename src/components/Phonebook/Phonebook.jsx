@@ -17,15 +17,15 @@ export default class Phonebook extends Component {
         const { nameId } = this;
     return (
         <>
-            <div>
+            <div className={css.form}>
                 <h2>Phonebook</h2>
-                <div className={css.form}>
-                    <label htmlFor={nameId} >Name</label>
+                <div>
+                    <label htmlFor={nameId}> Name </label>
                     <input className={css.input} id={nameId} type="text" value={this.state.name} onChange={this.handleName} />
                 </div>
                  <div>
-                    <label htmlFor={nameId} >Number</label>
-                    <input
+                    <label htmlFor={nameId} > Number </label>
+                    <inputn
                         className={css.input}
                         id={nameId}
                         type="tel"
