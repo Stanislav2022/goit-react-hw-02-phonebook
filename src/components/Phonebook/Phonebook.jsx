@@ -12,17 +12,18 @@ export default class Phonebook extends Component {
     addContats = (data) => {
         this.setState((prev) => {
             return {
-        contacts: [...prev.contacts, data]
-    }
-})
-    }
+                contacts: [...prev.contacts, data]
+            }
+        })
+    };
     
     render() {
+        const { addContats } = this;
     return (
         <>
             <div className={css.form}>
                 <h1>Phonebook</h1>
-                <ContactForm/>
+                <ContactForm onSubmit={ addContats} />
             </div>
             <div>
                 <h2>Contacts</h2>
