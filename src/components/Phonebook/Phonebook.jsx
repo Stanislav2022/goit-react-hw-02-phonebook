@@ -17,7 +17,7 @@ export default class Phonebook extends Component {
 
     addContats = (data) => {
         if (this.isDuplicate(data)) {
-            return alert(`ERROR`)
+            return alert(`${data.name} - is already in contacts`)
         }
         this.setState((prev) => {
             const newData = { id: nanoid(), ...data}
@@ -76,7 +76,6 @@ export default class Phonebook extends Component {
             </div>
             <div>
                 <h2>Contacts</h2>
-                
                 <Filter filter={ filter} handleChange={handleChange}  />
                 <ContactList items={contacts} removeContact={removeContact} />
 
