@@ -1,8 +1,9 @@
-import { Component } from 'react'
+import { Component } from 'react';
 import css from "./Phonebook.module.css";
-import { nanoid } from 'nanoid'
-import ContactForm from "./ContactForm/ContactForm"
+import { nanoid } from 'nanoid';
+import ContactForm from "./ContactForm/ContactForm";
 import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
 
 export default class Phonebook extends Component {
     state = {
@@ -75,7 +76,8 @@ export default class Phonebook extends Component {
             </div>
             <div>
                 <h2>Contacts</h2>
-                <input type="text" name="filter" value={filter}onChange={handleChange}></input>
+                
+                <Filter filter={ filter} handleChange={handleChange}  />
                 <ContactList items={contacts} removeContact={removeContact} />
 
 
