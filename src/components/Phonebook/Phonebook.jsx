@@ -15,6 +15,9 @@ export default class Phonebook extends Component {
     };
 
     addContats = (data) => {
+        if (this.isDuplicate(data)) {
+            return alert(`ERROR`)
+        }
         this.setState((prev) => {
             const newData = { id: nanoid(), ...data}
             return {
@@ -22,11 +25,13 @@ export default class Phonebook extends Component {
             }
         })
     };
-    removeContat = (id) => {
+    removeContact = (id) => {
         this.setState((prev) => {
             const newContacts = prev.contacts.filter((item) =>
                 item.id !== id);
-            return newContacts
+            return {
+                contacts: newContacts
+            }
         })
     }
 
@@ -36,6 +41,12 @@ export default class Phonebook extends Component {
             [name]: value
         })
     };
+
+    isDuplicate ({name, number}) {
+        const { contacts } = this.state;
+        const result = contacts.find((item) => item.name === name && item.number === number)
+        return result
+    }
 
     getFiltereContacts() {
         const { contacts, filter } = this.state;
@@ -53,7 +64,7 @@ export default class Phonebook extends Component {
     }
 
     render() {
-        const { addContats, removeContat, handleChange } = this;
+        const { addContats, removeContact, handleChange } = this;
         const { filter } = this.state;
         const contacts = this.getFiltereContacts();
     return (
@@ -65,7 +76,7 @@ export default class Phonebook extends Component {
             <div>
                 <h2>Contacts</h2>
                 <input type="text" name="filter" value={filter}onChange={handleChange}></input>
-                <ContactList items={contacts} removeContat={ removeContat} />
+                <ContactList items={contacts} removeContact={removeContact} />
 
 
             </div>
