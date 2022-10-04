@@ -74,7 +74,7 @@ export default class Phonebook extends Component {
                 <h1>Phonebook</h1>
                 <ContactForm onSubmit={ addContats} />
             </div>
-            <div>
+            <div className={css.form}>
                 <h2>Contacts</h2>
                 <Filter filter={ filter} handleChange={handleChange}  />
                 <ContactList items={contacts} removeContact={removeContact} />
