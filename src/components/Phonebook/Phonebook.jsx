@@ -12,7 +12,7 @@ export default class Phonebook extends Component {
     };
 
     addContats = (data) => {
-        if (this.isDuplicate(data)) {
+          if (this.isDuplicate(data)) {
             return alert(`${data.name} - is already in contacts`)
         }
         this.setState((prev) => {
@@ -40,9 +40,9 @@ export default class Phonebook extends Component {
         })
     };
 
-    isDuplicate ({name, number}) {
+    isDuplicate ({name}) {
         const { contacts } = this.state;
-        const result = contacts.find((item) => item.name === name && item.number === number)
+        const result = contacts.find((item) => item.name.toLocaleLowerCase() === name.toLocaleLowerCase())
         return result
     }
 
@@ -69,7 +69,7 @@ export default class Phonebook extends Component {
         <>
             <div className={css.form}>
                 <h1>Phonebook</h1>
-                <ContactForm onSubmit={ addContats} />
+                <ContactForm onSubmit={addContats} />
             </div>
             <div className={css.form}>
                 <h2>Contacts</h2>

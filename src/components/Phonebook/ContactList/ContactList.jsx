@@ -11,9 +11,12 @@ export default function ContactList({ items, removeContact }) {
 }
 
 ContactList.propTypes = {
-  name: PropTypes.number,
-  number: PropTypes.number,
-  id: PropTypes.string,
-  removeContact: PropTypes.func, 
-  items: PropTypes.array,
+  removeContact:  PropTypes.func.isRequired, 
+  items: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };
